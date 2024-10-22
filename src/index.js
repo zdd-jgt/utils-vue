@@ -73,4 +73,14 @@ export default class utilsVue {
         tel = String(tel);
         return tel.substr(0,3) + "****" + tel.substr(7);
     }
+
+    /**
+     * 短横线命名转换成驼峰命名
+     * @param {string} str - 短横线字符串
+     * @returns {string} - 返回驼峰命名
+     */
+    static getCamelCase (str){
+        return str.replace( /-([a-z])/g, (i, item) => item.toUpperCase())
+    }
+
 }

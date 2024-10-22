@@ -20,11 +20,12 @@ utilsVue.isEmpty('0')
 | setPercentileSeparation | 数字转为千分位分隔            | (number):string         | 1.0  |
 | fistLetterUpper         | 字符串首字母大写             | (string):string         | 1.0  |
 | telFormat               | 手机号中间四位变成*           | (number或string):string  | 1.0  |
+| getCamelCase            | 短横线命名转换成驼峰命名         |  (string):string        | 1.0  |
 
 ## 详细
 
 ### isEmpty(string)
-检查字符串是否为
+检查字符串是否为空
 - 示例
 ```javascript
 isEmpty('')
