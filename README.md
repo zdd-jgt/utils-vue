@@ -4,6 +4,12 @@
 
 `npm install utils-vue`
 
+```javascript
+import utilsVue from 'utils-vue'
+utilsVue.isEmpty('0')
+// false
+```
+
 ## 目录
 
 | 方法名                     | 说明                   | 参数                      | 版本   |
