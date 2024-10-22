@@ -22,6 +22,8 @@ utilsVue.isEmpty('0')
 | telFormat               | 手机号中间四位变成*           | (number或string):string  | 1.0  |
 | getCamelCase            | 短横线命名转换成驼峰命名         | (string):string         | 1.0  |
 | getKebabCase            | 驼峰命名转换成短横线命名         | (string):string         | 1.0  |
+| digitUppercase          | 数字转化为大写金额            | (number):string         | 1.0  |
+| intToChinese            | 数字转化为中文数字（不支持小数）     | (number):string         | 1.0  |
 
 ## 详细
 
@@ -103,4 +105,24 @@ getCamelCase('get_camel_case')
 ```javascript
 getKebabCase('getKebabCase')
 // 'get-kebab-case'
+```
+
+### digitUppercase(number)
+数字转化为大写金额
+- 示例
+```javascript
+digitUppercase('999999999')
+// '玖亿玖仟玖佰玖拾玖万玖仟玖佰玖拾玖元整'
+digitUppercase('9999999.99')
+// '玖佰玖拾玖万玖仟玖佰玖拾玖元玖角玖分'
+digitUppercase('99999.9999')
+// '玖万玖仟玖佰玖拾玖元玖角玖分'
+```
+
+### intToChinese(number)
+数字转化为中文数字（不支持小数）
+- 示例
+```javascript
+intToChinese('999999999')
+// '九亿九千九百九十九万九千九百九十九'
 ```
