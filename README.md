@@ -87,3 +87,11 @@ telFormat(13836789010)
 telFormat('13836789010')
 // '138****9010'
 ```
+
+### getCamelCase(string)
+短横线命名转换成驼峰命名
+- 示例
+```javascript
+getCamelCase('get_camel_case')
+// 'get_camel_case'
+```
