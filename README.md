@@ -20,7 +20,8 @@ utilsVue.isEmpty('0')
 | setPercentileSeparation | 数字转为千分位分隔            | (number):string         | 1.0  |
 | fistLetterUpper         | 字符串首字母大写             | (string):string         | 1.0  |
 | telFormat               | 手机号中间四位变成*           | (number或string):string  | 1.0  |
-| getCamelCase            | 短横线命名转换成驼峰命名         |  (string):string        | 1.0  |
+| getCamelCase            | 短横线命名转换成驼峰命名         | (string):string         | 1.0  |
+| getKebabCase            | 驼峰命名转换成短横线命名         | (string):string         | 1.0  |
 
 ## 详细
 
@@ -94,4 +95,12 @@ telFormat('13836789010')
 ```javascript
 getCamelCase('get_camel_case')
 // 'get_camel_case'
+```
+
+### getKebabCase(string)
+驼峰命名转换成短横线命名
+- 示例
+```javascript
+getKebabCase('getKebabCase')
+// 'get-kebab-case'
 ```

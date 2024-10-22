@@ -83,4 +83,13 @@ export default class utilsVue {
         return str.replace( /-([a-z])/g, (i, item) => item.toUpperCase())
     }
 
+    /**
+     * 驼峰命名转换成短横线命名
+     * @param {string} str - 驼峰字符串
+     * @returns {string} - 返回短横线命名
+     */
+    static getKebabCase (str){
+        return str.replace(/[A-Z]/g, (item) => '-' + item.toLowerCase())
+    }
+
 }
