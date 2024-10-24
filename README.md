@@ -12,20 +12,21 @@ utilsVue.isEmpty('0')
 
 ## 目录
 
-| 方法名                     | 说明                   | 参数                           | 版本    |
-|-------------------------|----------------------|------------------------------|-------|
-| isEmpty                 | 检查字符串是否为空            | (string):boolean             | 1.0   |
-| hexToRgba               | 颜色格式转换：hex格式转为rgba格式 | (string, number):string      | 1.0   |
-| randomNum               | 生成指定范围随机数            | (number, number):number      | 1.0   |
-| setPercentileSeparation | 数字转为千分位分隔            | (number):string              | 1.0   |
-| fistLetterUpper         | 字符串首字母大写             | (string):string              | 1.0   |
-| telFormat               | 手机号中间四位变成*           | (number或string):string       | 1.0   |
-| getCamelCase            | 短横线命名转换成驼峰命名         | (string):string              | 1.0   |
-| getKebabCase            | 驼峰命名转换成短横线命名         | (string):string              | 1.0   |
-| digitUppercase          | 数字转化为大写金额            | (number):string              | 1.0   |
-| intToChinese            | 数字转化为中文数字（不支持小数）     | (number):string              | 1.0   |
-| debounce                | 防抖函数                 | (function, number):function  | 1.0   |
-| throttle                | 节流函数                 | (function, number):function  | 1.0   |
+| 方法名                     | 说明                   | 参数                          | 版本   |
+|-------------------------|----------------------|-----------------------------|------|
+| isEmpty                 | 检查字符串是否为空            | (string):boolean            | 1.0  |
+| hexToRgba               | 颜色格式转换：hex格式转为rgba格式 | (string, number):string     | 1.0  |
+| randomNum               | 生成指定范围随机数            | (number, number):number     | 1.0  |
+| setPercentileSeparation | 数字转为千分位分隔            | (number):string             | 1.0  |
+| fistLetterUpper         | 字符串首字母大写             | (string):string             | 1.0  |
+| telFormat               | 手机号中间四位变成*           | (number或string):string      | 1.0  |
+| getCamelCase            | 短横线命名转换成驼峰命名         | (string):string             | 1.0  |
+| getKebabCase            | 驼峰命名转换成短横线命名         | (string):string             | 1.0  |
+| digitUppercase          | 数字转化为大写金额            | (number):string             | 1.0  |
+| intToChinese            | 数字转化为中文数字（不支持小数）     | (number):string             | 1.0  |
+| debounce                | 防抖函数                 | (function, number):function | 1.0  |
+| throttle                | 节流函数                 | (function, number):function | 1.0  |
+| deepClone               | 对象深拷贝                | (Object, WeakMap):Object    | 1.0  |
 
 ## 详细
 
@@ -165,4 +166,38 @@ const button = document.getElementById('myButton');
 button.addEventListener('click', throttle(function() {
   console.log('Button clicked');
 }, 2000));
+```
+
+### deepClone(object, WeakMap)
+对象深拷贝
+- 示例
+```javascript
+const original = {
+  name: 'John',
+  age: 30,
+  dateOfBirth: new Date('1990-01-01'),
+  hobbies: ['reading', 'traveling'],
+  address: {
+    street: '123 Main St',
+    city: 'Anytown'
+  }
+};
+// 循环引用测试
+original.self = original;
+
+// 使用深拷贝函数
+const cloned = deepClone(original);
+
+// 修改原对象以验证深拷贝
+original.name = 'Doe';
+original.hobbies.push('coding');
+
+console.log('Original:', original);
+console.log('Cloned:', cloned);
+
+// 验证深拷贝是否成功
+console.log(cloned.name); // John
+console.log(cloned.hobbies); // ['reading', 'traveling']
+console.log(cloned.dateOfBirth); // Date object
+console.log(cloned.self === cloned); // true (保持循环引用)
 ```

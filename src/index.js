@@ -164,9 +164,11 @@ export default class utilsVue {
 
     /**
      * 防抖函数
-     * @param {function} fn - 要防抖的函数
-     * @param {number} wait - 等待时间（毫秒）
-     * @returns {function} - 返回防抖后的函数
+     * @param {function} fn - 要防抖的函数，只有在指定的等待时间后才会被执行
+     * @param {number} wait - 等待时间（毫秒），表示两次调用之间的最小间隔
+     * @returns {function} - 返回一个新的防抖函数，该函数在连续调用时会延迟执行
+     *
+     * @throws {TypeError} 如果 fn 不是函数，或者 wait 不是非负数字，则抛出 TypeError
      */
     static debounce (fn, wait) {
         if (typeof fn !== 'function') {
@@ -191,9 +193,11 @@ export default class utilsVue {
 
     /**
      * 节流函数
-     * @param {function} fn - 要节流的函数
-     * @param {number} delay - 等待时间（毫秒）
-     * @returns {function} - 返回节流后的函数
+     * @param {function} fn - 要节流的函数，只有在指定的时间间隔内才会被调用
+     * @param {number} delay - 节流延迟时间（毫秒），表示两次调用之间的最小间隔
+     * @returns {function} - 返回一个新函数，该函数在指定时间间隔内只会执行一次
+     *
+     * @throws {TypeError} 如果 fn 不是函数，或者 delay 不是非负数字，则抛出 TypeError
      */
     static throttle (fn, delay) {
         if (typeof fn !== 'function') {
@@ -213,5 +217,45 @@ export default class utilsVue {
                 return fn.apply(context, args);
             }
         };
+    }
+
+    /**
+     * 对象深拷贝
+     * @param {Object} obj - 要进行深拷贝的对象
+     * @param {WeakMap} [hash=new WeakMap()] - 用于解决循环引用的 WeakMap
+     * @returns {Object} - 返回深拷贝后的新对象
+     */
+    static deepClone (obj, hash = new WeakMap()) {
+        // 检查输入是否为对象或数组
+        if (obj === null || typeof obj !== 'object') {
+            return obj; // 基本数据类型直接返回
+        }
+
+        // 如果是日期对象，返回一个新的日期对象
+        if (obj instanceof Date){
+            return new Date(obj);
+        }
+
+        // 如果是正则对象，返回一个新的正则对象
+        if (obj instanceof RegExp){
+            return new RegExp(obj);
+        }
+        // 检查是否存在循环引用，如果有，直接返回已存在的克隆对象
+        if (hash.has(obj)){
+            return hash.get(obj);
+        }
+        // 获取对象所有自身属性的描述符
+        let allDesc = Object.getOwnPropertyDescriptors(obj);
+        // 创建一个新的对象，使用原对象的原型和属性描述符
+        let cloneObj = Object.create(Object.getPrototypeOf(obj), allDesc)
+        // 将原对象和克隆对象的映射存储到 WeakMap 中，以处理循环引用
+        hash.set(obj, cloneObj)
+        // 遍历原对象的所有键
+        for (let key of Reflect.ownKeys(obj)) {
+            // 递归拷贝对象属性
+            cloneObj[key] = this.deepClone(obj[key], hash);
+        }
+        // 返回深拷贝后的新对象
+        return cloneObj
     }
 }
