@@ -1,6 +1,6 @@
 {
   "name": "utils-vue",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "一个工具库",
   "main": "dist/utils-vue.js",
   "scripts": {
@@ -10,7 +10,8 @@
   "keywords": [
     "utility",
     "tools",
-    "utils"
+    "utils",
+    "Tool Library"
   ],
   "author": "",
   "license": "ISC",
