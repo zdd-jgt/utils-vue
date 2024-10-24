@@ -162,4 +162,56 @@ export default class utilsVue {
         });
     }
 
+    /**
+     * 防抖函数
+     * @param {function} fn - 要防抖的函数
+     * @param {number} wait - 等待时间（毫秒）
+     * @returns {function} - 返回防抖后的函数
+     */
+    static debounce (fn, wait) {
+        if (typeof fn !== 'function') {
+            throw new TypeError('Expected a function');
+        }
+        if (typeof wait !== 'number' || wait < 0) {
+            throw new TypeError('Expected a non-negative number');
+        }
+        let timer = null;
+
+        return function(...args) {
+            const context = this;
+
+            // 清除之前的定时器
+            clearTimeout(timer);
+
+            timer = setTimeout(() => {
+                fn.apply(context, args);
+            }, wait);
+        };
+    }
+
+    /**
+     * 节流函数
+     * @param {function} fn - 要节流的函数
+     * @param {number} delay - 等待时间（毫秒）
+     * @returns {function} - 返回节流后的函数
+     */
+    static throttle (fn, delay) {
+        if (typeof fn !== 'function') {
+            throw new TypeError('Expected a function');
+        }
+        if (typeof delay !== 'number' || delay < 0) {
+            throw new TypeError('Expected a non-negative number');
+        }
+        let lastExecutionTime = 0;
+
+        return function(...args) {
+            const context = this;
+            const now = Date.now();
+
+            if (now - lastExecutionTime >= delay) {
+                lastExecutionTime = now;
+                return fn.apply(context, args);
+            }
+        };
+    }
 }
