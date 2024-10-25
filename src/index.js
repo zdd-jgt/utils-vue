@@ -34,25 +34,20 @@ export default class utilsVue {
     }
 
     /**
-     * 数字转为千分位分隔
-     * @param {number} n - 传入整数
+     * 金额转为千分位分隔
+     * @param {number} n - 传入金额
      * @returns {string} - 返回千分位分隔的金额字符
      */
     static setPercentileSeparation (n){
-        if (!n) return '0'
-        let num = n.toString();
-        let len = num.length;
-        if (len <= 3) {
-            return num;
-        } else {
-            let temp = '';
-            let remainder = len % 3;
-            if (remainder > 0) { // 不是3的整数倍
-                return num.slice(0, remainder) + ',' + num.slice(remainder, len).match(/\d{3}/g).join(',') + temp;
-            } else { // 3的整数倍
-                return num.slice(0, len).match(/\d{3}/g).join(',') + temp;
-            }
-        }
+        if (!n) return '0';
+
+        const [integerPart, decimalPart = ''] = n.toString().split('.');
+        // 正则表达式 /\B(?=(\d{3})+(?!\d))/g
+        // \B：匹配非单词边界，这可以确保不会在数字开头插入逗号。
+        // (?=(\d{3})+(?!\d))：使用前瞻断言检查是否有连续的 3 位数字组，不包括末尾的数字。
+        const formattedInt = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+        return decimalPart ? `${formattedInt}.${decimalPart}` : formattedInt;
     }
 
     /**

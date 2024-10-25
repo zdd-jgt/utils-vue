@@ -1,5 +1,7 @@
 # 常用工具函数
 
+> github: https://github.com/zdd-jgt/utils-vue
+
 ## 安装
 
 `npm install utils-vue`
@@ -17,7 +19,7 @@ utilsVue.isEmpty('0')
 | [isEmpty](#isEmpty)                                 | 检查字符串是否为空            | (string):boolean            | 1.0  |
 | [hexToRgba](#hexToRgba)                             | 颜色格式转换：hex格式转为rgba格式 | (string, number):string     | 1.0  |
 | [randomNum](#randomNum)                             | 生成指定范围随机数            | (number, number):number     | 1.0  |
-| [setPercentileSeparation](#setPercentileSeparation) | 数字转为千分位分隔            | (number):string             | 1.0  |
+| [setPercentileSeparation](#setPercentileSeparation) | 金额转为千分位分隔            | (number):string             | 1.0  |
 | [fistLetterUpper](#fistLetterUpper)                 | 字符串首字母大写             | (string):string             | 1.0  |
 | [telFormat](#telFormat)                             | 手机号中间四位变成*           | (number或string):string      | 1.0  |
 | [getCamelCase](#getCamelCase)                       | 短横线命名转换成驼峰命名         | (string):string             | 1.0  |
@@ -75,13 +77,15 @@ randomNum(0, 10000)
 ### setPercentileSeparation
 setPercentileSeparation(number)
 
-数字转为千分位分隔,不支持支持小数
+金额转为千分位分隔
 - 示例
 ```javascript
 setPercentileSeparation(100)
 // '100'
 setPercentileSeparation(1000)
 // '1,000'
+setPercentileSeparation(1234567.2002)
+// '1,234,567.2002'
 ```
 
 ### fistLetterUpper
@@ -100,10 +104,8 @@ telFormat(string|number)
 手机号中间四位变成*
 - 示例
 ```javascript
-telFormat(13836789010)
-// '138****9010'
-telFormat('13836789010')
-// '138****9010'
+telFormat(10000000000)
+// '100****0000'
 ```
 
 ### getCamelCase
