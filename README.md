@@ -228,3 +228,5 @@ console.log(cloned.hobbies); // ['reading', 'traveling']
 console.log(cloned.dateOfBirth); // Date object
 console.log(cloned.self === cloned); // true (保持循环引用)
 ```
+
+> This message is used to verify that this feed (feedId:73927881847740416) belongs to me (userId:73917280460788736). Join me in enjoying the next generation information browser https://follow.is.
