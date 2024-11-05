@@ -1,4 +1,6 @@
 export default class utilsVue {
+    // 静态变量
+    static REG_IDNUMBER = /^(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;  // 身份证验证
     /**
      * 检查字符串是否为空
      * @param {string} str - 要检查的字符串
@@ -252,5 +254,51 @@ export default class utilsVue {
         }
         // 返回深拷贝后的新对象
         return cloneObj
+    }
+
+    /**
+     * 根据身份证号码获取年龄、生日和性别
+     * @param {string} identityCard - 身份证号码
+     * @returns {Object} - 返回一个对象，包含年龄、生日、性别。若身份证无效，返回 '无效身份证'。
+     */
+    static getIDCardInfo(identityCard) {
+        // 正则表达式验证身份证号码格式（15位或18位）
+        if (!this.REG_IDNUMBER.test(identityCard)) {
+            return '无效身份证'; // 如果身份证格式不正确，返回 '无效身份证'
+        }
+
+        const len = identityCard.length;
+        let birthDate, sexNum;
+
+        // 获取生日字符串
+        if (len === 18) {
+            // 18位身份证：年、月、日从指定位置提取
+            birthDate = `${identityCard.substr(6, 4)}-${identityCard.substr(10, 2)}-${identityCard.substr(12, 2)}`;
+            sexNum = parseInt(identityCard.charAt(16), 10); // 18位身份证的性别位在第17位（从0开始索引）
+        } else if (len === 15) {
+            // 15位身份证：年份需要加上 "19" 前缀
+            birthDate = `19${identityCard.substr(6, 2)}-${identityCard.substr(8, 2)}-${identityCard.substr(10, 2)}`;
+            sexNum = parseInt(identityCard.charAt(14), 10); // 15位身份证的性别位在第15位（从0开始索引）
+        }
+
+        // 计算年龄
+        const birthDateObj = new Date(birthDate);
+        const nowDateTime = new Date();
+        let age = nowDateTime.getFullYear() - birthDateObj.getFullYear();
+
+        // 如果当前日期早于出生日期，则年龄减去 1
+        if (nowDateTime.getMonth() < birthDateObj.getMonth() ||
+            (nowDateTime.getMonth() === birthDateObj.getMonth() && nowDateTime.getDate() < birthDateObj.getDate())) {
+            age--;
+        }
+
+        // 根据性别位判断性别（奇数为男，偶数为女）
+        const sex = sexNum % 2 === 1 ? '男' : '女';
+
+        return {
+            age: age || 0,  // 兼容age为NAN则返回 0
+            sex: sex,
+            birthday: birthDate // 返回格式化后的生日
+        };
     }
 }
