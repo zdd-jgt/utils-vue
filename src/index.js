@@ -301,4 +301,73 @@ export default class utilsVue {
             birthday: birthDate // 返回格式化后的生日
         };
     }
+
+    /**
+     * 定时任务器
+     * @returns {Object} - 返回一个对象包含3个函数：添加任务、启动任务、销毁任务。
+     */
+    static createDailyScheduler() {
+        const tasks = [];
+        const timers = [];
+
+        /**
+         * 添加定时任务
+         * @param {string} time - 每天的时间，格式为 "HH:mm"。
+         * @param {function} callback - 到指定时间触发的回调函数。
+         */
+        function addTask(time, callback) {
+            const [hour, minute] = time.split(':').map(Number);
+            if (isNaN(hour) || isNaN(minute)) {
+                throw new Error('时间格式错误，请使用 "HH:mm" 格式');
+            }
+            tasks.push({ hour, minute, callback });
+        }
+
+        /**
+         * 启动所有任务
+         */
+        function start() {
+            tasks.forEach(task => scheduleTask(task.hour, task.minute, task.callback));
+        }
+
+        /**
+         * 销毁所有任务
+         */
+        function destroy() {
+            timers.forEach(timerId => clearTimeout(timerId)); // 清理所有定时器
+            timers.length = 0; // 清空定时器数组
+            console.log('所有定时任务已销毁');
+        }
+
+        /**
+         * 定时任务调度
+         * @param {number} hour - 目标小时。
+         * @param {number} minute - 目标分钟。
+         * @param {function} callback - 到时间触发的回调函数。
+         */
+        function scheduleTask(hour, minute, callback) {
+            const now = new Date();
+            const targetTime = new Date();
+            targetTime.setHours(hour, minute, 0, 0);
+
+            // 如果目标时间已过，调整为明天
+            if (targetTime <= now) {
+                targetTime.setDate(targetTime.getDate() + 1);
+            }
+
+            const delay = targetTime - now; // 计算延迟时间
+
+            // 设置定时器
+            const timerId = setTimeout(() => {
+                callback(); // 执行任务
+
+                // 再次调度，确保明天也能触发
+                scheduleTask(hour, minute, callback);
+            }, delay);
+
+            timers.push(timerId); // 保存定时器 ID，用于销毁
+        }
+
+        return { addTask, start, destroy };
+    }
 }

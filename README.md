@@ -16,23 +16,24 @@ utilsVue.REG_IDNUMBER
 
 ## 目录
 
-| 方法名                                                 | 说明                   | 参数                                              | 版本    |
-|-----------------------------------------------------|----------------------|-------------------------------------------------|-------|
-| [REG_IDNUMBER](#REG_IDNUMBER)                       | 静态变量:身份证验证           | 无                                               | 1.0   |
-| [isEmpty](#isEmpty)                                 | 检查字符串是否为空            | (string):boolean                                | 1.0   |
-| [hexToRgba](#hexToRgba)                             | 颜色格式转换：hex格式转为rgba格式 | (string, number):string                         | 1.0   |
-| [randomNum](#randomNum)                             | 生成指定范围随机数            | (number, number):number                         | 1.0   |
-| [setPercentileSeparation](#setPercentileSeparation) | 金额转为千分位分隔            | (number):string                                 | 1.0   |
-| [fistLetterUpper](#fistLetterUpper)                 | 字符串首字母大写             | (string):string                                 | 1.0   |
-| [telFormat](#telFormat)                             | 手机号中间四位变成*           | (number或string):string                          | 1.0   |
-| [getCamelCase](#getCamelCase)                       | 短横线命名转换成驼峰命名         | (string):string                                 | 1.0   |
-| [getKebabCase](#getKebabCase)                       | 驼峰命名转换成短横线命名         | (string):string                                 | 1.0   |
-| [digitUppercase](#digitUppercase)                   | 数字转化为大写金额            | (number):string                                 | 1.0   |
-| [intToChinese](#intToChinese)                       | 数字转化为中文数字（不支持小数）     | (number):string                                 | 1.0   |
-| [debounce](#debounce)                               | 防抖函数                 | (function, number):function                     | 1.0   |
-| [throttle](#throttle)                               | 节流函数                 | (function, number):function                     | 1.0   |
-| [deepClone](#deepClone)                             | 对象深拷贝                | (Object, WeakMap):Object                        | 1.0   |
-| [getIDCardInfo](#getIDCardInfo)                     | 根据身份证号码获取年龄、生日和性别    | (string):{age: any, birthday: any, sex: string} | 1.0   |
+| 方法名                                                 | 说明                   | 参数                                              | 版本  |
+|-----------------------------------------------------|----------------------|-------------------------------------------------|-----|
+| [REG_IDNUMBER](#REG_IDNUMBER)                       | 静态变量:身份证验证           | 无                                               | 1.0 |
+| [isEmpty](#isEmpty)                                 | 检查字符串是否为空            | (string):boolean                                | 1.0 |
+| [hexToRgba](#hexToRgba)                             | 颜色格式转换：hex格式转为rgba格式 | (string, number):string                         | 1.0 |
+| [randomNum](#randomNum)                             | 生成指定范围随机数            | (number, number):number                         | 1.0 |
+| [setPercentileSeparation](#setPercentileSeparation) | 金额转为千分位分隔            | (number):string                                 | 1.0 |
+| [fistLetterUpper](#fistLetterUpper)                 | 字符串首字母大写             | (string):string                                 | 1.0 |
+| [telFormat](#telFormat)                             | 手机号中间四位变成*           | (number或string):string                          | 1.0 |
+| [getCamelCase](#getCamelCase)                       | 短横线命名转换成驼峰命名         | (string):string                                 | 1.0 |
+| [getKebabCase](#getKebabCase)                       | 驼峰命名转换成短横线命名         | (string):string                                 | 1.0 |
+| [digitUppercase](#digitUppercase)                   | 数字转化为大写金额            | (number):string                                 | 1.0 |
+| [intToChinese](#intToChinese)                       | 数字转化为中文数字（不支持小数）     | (number):string                                 | 1.0 |
+| [debounce](#debounce)                               | 防抖函数                 | (function, number):function                     | 1.0 |
+| [throttle](#throttle)                               | 节流函数                 | (function, number):function                     | 1.0 |
+| [deepClone](#deepClone)                             | 对象深拷贝                | (Object, WeakMap):Object                        | 1.0 |
+| [getIDCardInfo](#getIDCardInfo)                     | 根据身份证号码获取年龄、生日和性别    | (string):{age: any, birthday: any, sex: string} | 1.0 |
+| [createDailyScheduler](#createDailyScheduler)       | 设置定时任务器              | ():Object                                       | 1.0 |
 
 ## 详细
 
@@ -241,8 +242,8 @@ console.log(cloned.self === cloned); // true (保持循环引用)
 getIDCardInfo(string)
 
 根据身份证号码获取年龄、生日和性别
-返回一个对象，包含年龄、生日、性别。若身份证无效，返回 '无效身份证'。
 
+返回一个对象，包含年龄、生日、性别。若身份证无效，返回 '无效身份证'。
 - 示例
 ```javascript
 console.log(getIDCardInfo("123456198901011234"));
@@ -253,4 +254,33 @@ console.log(getIDCardInfo(""));
 // 示例：返回 '无效身份证'
 console.log(getIDCardInfo("123456789012345678"));
 // 示例：返回 '无效身份证'
+```
+
+### createDailyScheduler
+const scheduler = createDailyScheduler();
+
+添加定时任务
+
+返回一个对象包含3个函数：添加任务、启动任务、销毁任务。
+
+用户只需调用 addTask 添加任务，调用 start 启动任务，调用 destroy 销毁任务即可。
+- 示例
+```javascript
+const scheduler = createDailyScheduler();
+
+// 添加每天 8:00 的任务
+scheduler.addTask('08:00', () => {
+  console.log(`任务1 - 当前时间: ${new Date().toLocaleString()}`);
+});
+
+// 添加每天 12:00 的任务
+scheduler.addTask('12:00', () => {
+  console.log(`任务2 - 当前时间: ${new Date().toLocaleString()}`);
+});
+
+// 启动任务
+scheduler.start();
+
+// 在需要时销毁任务
+// scheduler.destroy();
 ```
