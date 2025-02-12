@@ -370,4 +370,57 @@ export default class utilsVue {
 
         return { addTask, start, destroy };
     }
+
+    /**
+     * 全屏展示功能
+     * @param {Object} el - ref对象、DOM对象
+     * @returns {Object} - 返回 全屏展示、退出全屏
+     */
+    static fullScreenDisplay(el) {
+        let fullscreenText = '全屏展示';
+
+        // 请求全屏
+        function enterFullscreen(el) {
+            const requestFullScreen =
+                el.requestFullscreen ||
+                el.webkitRequestFullScreen ||
+                el.mozRequestFullScreen ||
+                el.msRequestFullscreen;
+
+            if (requestFullScreen) {
+                requestFullScreen.call(el);
+                fullscreenText = '退出全屏';
+            }
+        }
+
+        // 退出全屏
+        function exitFullScreen() {
+            const exitFullscreen =
+                document.exitFullscreen ||
+                document.mozCancelFullScreen ||
+                document.webkitCancelFullScreen ||
+                document.msExitFullscreen;
+
+            if (exitFullscreen) {
+                exitFullscreen.call(document);
+                fullscreenText = '全屏展示';
+            }
+        }
+
+        // 判断当前是否已进入全屏
+        function isFullScreen() {
+            return document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement;
+        }
+
+        // 切换全屏状态
+        function toggleFullScreen() {
+            if (isFullScreen()) {
+                exitFullScreen();
+            } else {
+                enterFullscreen(el);
+            }
+        }
+
+        return { enterFullscreen, exitFullScreen, toggleFullScreen, fullscreenText };
+    }
 }
