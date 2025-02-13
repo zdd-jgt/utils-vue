@@ -205,43 +205,7 @@ function getIOSVersion () {
     }
 }
 
-/**
- * @description 获取 location.hash 对应参数值
- * @param {String} name 参数key
- * @returns {String} 参数存在，返回对应的value；参数不存在，返回空字符
- * @example
- * lm.baseUtils.getHashParam('name') => '张三'
- */
-function getHashParam (name) {
-    try {
-        if (!name) {
-            return ''
-        }
-        if (location.hash.indexOf('?') === -1) {
-            return ''
-        }
-        let params = location.hash.split('?')[1]
-        let paramList = []
-        let param = null
-        let theRequest = {}
-        if (params.length > 0) {
-            if (params.indexOf('&') >= 0) {
-                paramList = params.split('&')
-            } else {
-                paramList[0] = params
-            }
-            for (let i = 0; i < paramList.length; i++) {
-                theRequest[paramList[i].split('=')[0]] = decodeURIComponent(paramList[i].split('=')[1])
-            }
-            param = theRequest[name]
-        }
-        return param
-    } catch (error) {
-        return ''
-    }
-}
-
-export {
+module.exports = {
     isIOS,
     isAndroid,
     isWeiXin,
@@ -255,7 +219,6 @@ export {
     isZlbApp,
     isZlbMP,
     getIOSVersion,
-    getHashParam,
 }
 
 

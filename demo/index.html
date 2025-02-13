@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../dist/utils-vue.js"></script>
+</head>
+<body>
+
+</body>
+<script>
+    console.log(utilsVue, '====')
+    let {addStrings, intToChinese, digitUppercase, getIDCardInfo, isIOS, validateIDCard} = utilsVue.utils;
+    console.log(addStrings('123456789012233', '39087556789900901'), '===utilsVue==')
+    console.log(intToChinese('999999999'), '===utilsVue==')
+    console.log(digitUppercase('999999999'), '===utilsVue==')
+    console.log(getIDCardInfo("123456198901011234"), '===utilsVue==')
+    console.log(isIOS(), '===utilsVue==')
+    console.log(validateIDCard('142323199010410090'), '===isIdNumber==')
+    console.log(getIDCardInfo('142323199010410090'), '===isIdNumber==')
+</script>
+</html>

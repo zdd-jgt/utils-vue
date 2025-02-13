@@ -8,40 +8,78 @@
 
 ```javascript
 import utilsVue from 'utils-vue'
-utilsVue.isEmpty('0')
+utilsVue.utils.isEmpty('0')
 // false
-utilsVue.REG_IDNUMBER
+utilsVue.utils.REG_ID_NUMBER
 // /^(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/
 ```
 
 ## 目录
 
+### 数字处理工具
+
 | 方法名                                                 | 说明                   | 参数                                              | 版本    |
 |-----------------------------------------------------|----------------------|-------------------------------------------------|-------|
-| [REG_IDNUMBER](#REG_IDNUMBER)                       | 静态变量:身份证验证           | 无                                               | 1.0   |
-| [isEmpty](#isEmpty)                                 | 检查字符串是否为空            | (string):boolean                                | 1.0   |
-| [hexToRgba](#hexToRgba)                             | 颜色格式转换：hex格式转为rgba格式 | (string, number):string                         | 1.0   |
-| [randomNum](#randomNum)                             | 生成指定范围随机数            | (number, number):number                         | 1.0   |
-| [setPercentileSeparation](#setPercentileSeparation) | 金额转为千分位分隔            | (number):string                                 | 1.0   |
-| [fistLetterUpper](#fistLetterUpper)                 | 字符串首字母大写             | (string):string                                 | 1.0   |
-| [telFormat](#telFormat)                             | 手机号中间四位变成*           | (number或string):string                          | 1.0   |
-| [getCamelCase](#getCamelCase)                       | 短横线命名转换成驼峰命名         | (string):string                                 | 1.0   |
-| [getKebabCase](#getKebabCase)                       | 驼峰命名转换成短横线命名         | (string):string                                 | 1.0   |
 | [digitUppercase](#digitUppercase)                   | 数字转化为大写金额            | (number):string                                 | 1.0   |
 | [intToChinese](#intToChinese)                       | 数字转化为中文数字（不支持小数）     | (number):string                                 | 1.0   |
-| [addStrings](#addStrings)                           | 实现两个大数字符串相加          | (string, string):string                         | 1.0   |
-| [debounce](#debounce)                               | 防抖函数                 | (function, number):function                     | 1.0   |
-| [throttle](#throttle)                               | 节流函数                 | (function, number):function                     | 1.0   |
-| [deepClone](#deepClone)                             | 对象深拷贝                | (Object, WeakMap):Object                        | 1.0   |
-| [getIDCardInfo](#getIDCardInfo)                     | 根据身份证号码获取年龄、生日和性别    | (string):{age: any, birthday: any, sex: string} | 1.0   |
-| [createDailyScheduler](#createDailyScheduler)       | 设置定时任务器              | ():Object                                       | 1.0   |
-| [fullScreenDisplay](#fullScreenDisplay)             | 全屏展示功能               | (el):function                                   | 1.0   |
+| [randomNum](#randomNum)                             | 生成指定范围随机数            | (number, number):number                         | 1.0   |
+| [setPercentileSeparation](#setPercentileSeparation) | 金额转为千分位分隔            | (number):string                                 | 1.0   |
+| [telFormat](#telFormat)                             | 手机号中间四位变成*           | (number或string):string                          | 1.0   |
+
+### 字符串处理工具
+
+| 方法名                                 | 说明                | 参数                                              | 版本   |
+|-------------------------------------|-------------------|-------------------------------------------------|------|
+| [addStrings](#addStrings)           | 实现两个大数字符串相加       | (string, string):string                         | 1.0  |
+| [fistLetterUpper](#fistLetterUpper) | 字符串首字母大写          | (string):string                                 | 1.0  |
+| [getCamelCase](#getCamelCase)       | 短横线命名转换成驼峰命名      | (string):string                                 | 1.0  |
+| [getIDCardInfo](#getIDCardInfo)     | 根据身份证号码获取年龄、生日和性别 | (string):{age: any, birthday: any, sex: string} | 1.0  |
+| [getKebabCase](#getKebabCase)       | 驼峰命名转换成短横线命名      | (string):string                                 | 1.0  |
+| [isEmpty](#isEmpty)                 | 检查字符串是否为空         | (string):boolean                                | 1.0  |
+| [validateIDCard](#validateIDCard)   | 校验身份证号是否合法        | (string):boolean                                | 1.0  |
+
+### 常用正则表达式判断
+
+| 方法名                           | 说明          | 参数               | 版本    |
+|-------------------------------|-------------|------------------|-------|
+| [REG](#REG)                   | 静态变量        | 无                | 1.0   |
+| [isIdNumber](#isIdNumber)     | 是否是正确的身份证号码 | (string):boolean | 1.0   |
+
+### 其他工具
+
+| 方法名                                                 | 说明                   | 参数                          | 版本    |
+|-----------------------------------------------------|----------------------|-----------------------------|-------|
+| [REG_IDNUMBER](#REG_IDNUMBER)                       | 静态变量:身份证验证           | 无                           | 1.0   |
+| [hexToRgba](#hexToRgba)                             | 颜色格式转换：hex格式转为rgba格式 | (string, number):string     | 1.0   |
+| [debounce](#debounce)                               | 防抖函数                 | (function, number):function | 1.0   |
+| [throttle](#throttle)                               | 节流函数                 | (function, number):function | 1.0   |
+| [deepClone](#deepClone)                             | 对象深拷贝                | (object, weakMap):object    | 1.0   |
+| [createDailyScheduler](#createDailyScheduler)       | 设置定时任务器              | ():object                   | 1.0   |
+| [fullScreenDisplay](#fullScreenDisplay)             | 全屏展示功能               | (el):function               | 1.0   |
 
 ## 详细
 
-### REG_IDNUMBER
+### REG
 
-静态变量：身份证验证正则
+静态变量
+```javascript
+REG_ID_NUMBER // 身份证号码
+REG_URL // 网络链接地址
+REG_MOBILE // 手机号码
+REG_TELEPHONE // 固定电话号码
+REG_EMAIL // 邮件地址
+REG_CAR_PLATE // 车牌号
+```
+
+### isIdNumber
+isIdNumber(string)
+
+是否是正确的身份证号码
+- 示例
+```javascript
+isIdNumber('')
+// false
+```
 
 ### isEmpty
 isEmpty(string)
@@ -309,4 +347,17 @@ const { toggleFullScreen, fullscreenText } = fullScreenDisplay(document.document
 console.log(fullscreenText); // 输出 '全屏展示'
 toggleFullScreen(); // 切换至全屏
 console.log(fullscreenText); // 输出 '退出全屏'
+```
+
+### validateIDCard
+validateIDCard(string)
+
+校验身份证号是否合法
+
+返回 是否有效(true/false)
+
+- 示例
+```javascript
+validateIDCard('142323199010410090')
+// false
 ```
