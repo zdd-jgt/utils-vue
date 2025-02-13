@@ -423,4 +423,37 @@ export default class utilsVue {
 
         return { enterFullscreen, exitFullScreen, toggleFullScreen, fullscreenText };
     }
+
+    /**
+     * 实现两个大数字符串相加
+     * @param {string} num1 第一个大数字符串
+     * @param {string} num2 第二个大数字符串
+     * @returns {string} 相加结果的字符串
+     */
+    static addStrings(num1, num2) {
+        let i = num1.length - 1;
+        let j = num2.length - 1;
+        let carry = 0;
+        let result = '';
+
+        // 循环遍历两个数字的每一位
+        while (i >= 0 || j >= 0 || carry > 0) {
+            const digit1 = i >= 0 ? Number(num1[i]) : 0; // 获取 num1 当前位数字
+            const digit2 = j >= 0 ? Number(num2[j]) : 0; // 获取 num2 当前位数字
+
+            // 当前位的和加上进位
+            const sum = digit1 + digit2 + carry;
+
+            // 计算当前位的结果和新的进位
+            result = (sum % 10) + result; // 当前位是 sum 的个位
+            carry = Math.floor(sum / 10); // 更新进位
+
+            // 移动到前一位
+            i--;
+            j--;
+        }
+
+        return result;
+    }
+
 }

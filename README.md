@@ -29,6 +29,7 @@ utilsVue.REG_IDNUMBER
 | [getKebabCase](#getKebabCase)                       | 驼峰命名转换成短横线命名         | (string):string                                 | 1.0   |
 | [digitUppercase](#digitUppercase)                   | 数字转化为大写金额            | (number):string                                 | 1.0   |
 | [intToChinese](#intToChinese)                       | 数字转化为中文数字（不支持小数）     | (number):string                                 | 1.0   |
+| [addStrings](#addStrings)                           | 实现两个大数字符串相加          | (string, string):string                         | 1.0   |
 | [debounce](#debounce)                               | 防抖函数                 | (function, number):function                     | 1.0   |
 | [throttle](#throttle)                               | 节流函数                 | (function, number):function                     | 1.0   |
 | [deepClone](#deepClone)                             | 对象深拷贝                | (Object, WeakMap):Object                        | 1.0   |
@@ -159,6 +160,16 @@ intToChinese(number)
 ```javascript
 intToChinese('999999999')
 // '九亿九千九百九十九万九千九百九十九'
+```
+
+### addStrings
+addStrings(string, string)
+
+实现两个大数字符串相加
+- 示例
+```javascript
+addStrings('123456789012233', '39087556789900901')
+// '39211013578913134'
 ```
 
 ### debounce
