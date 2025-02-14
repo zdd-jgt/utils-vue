@@ -6,11 +6,6 @@
  * @description 处理年份
  * @param {String} year
  * @returns {string}
- * @example
- * dealYear('2020') => '今年'
- * dealYear('2019') => '去年'
- * dealYear('2021') => '明年'
- * dealYear('2025') => '2025年'
  */
 function dealYear (year) {
     let yearStr = ''
@@ -51,9 +46,6 @@ function addDays (targetDate, days) {
  * @description 是否为闰年，能被4整除且不能被100整除，或能被400整除
  * @param {String} year 年份
  * @returns {Boolean} 是返回 true，不是返回 false
- * @example
- * isLeapYear('2025') => false
- * isLeapYear('2020') => true
  */
 function isLeapYear (year) {
     if (year && year.length === 0) {
