@@ -28,34 +28,47 @@ utilsVue.utils.REG_ID_NUMBER
 
 ### 字符串处理工具
 
-| 方法名                                 | 说明                | 参数                                              | 版本   |
-|-------------------------------------|-------------------|-------------------------------------------------|------|
-| [addStrings](#addStrings)           | 实现两个大数字符串相加       | (string, string):string                         | 1.0  |
-| [fistLetterUpper](#fistLetterUpper) | 字符串首字母大写          | (string):string                                 | 1.0  |
-| [getCamelCase](#getCamelCase)       | 短横线命名转换成驼峰命名      | (string):string                                 | 1.0  |
-| [getIDCardInfo](#getIDCardInfo)     | 根据身份证号码获取年龄、生日和性别 | (string):{age: any, birthday: any, sex: string} | 1.0  |
-| [getKebabCase](#getKebabCase)       | 驼峰命名转换成短横线命名      | (string):string                                 | 1.0  |
-| [isEmpty](#isEmpty)                 | 检查字符串是否为空         | (string):boolean                                | 1.0  |
-| [validateIDCard](#validateIDCard)   | 校验身份证号是否合法        | (string):boolean                                | 1.0  |
+| 方法名                                 | 说明                | 参数                                              | 版本  |
+|-------------------------------------|-------------------|-------------------------------------------------|-----|
+| [addStrings](#addStrings)           | 实现两个大数字符串相加       | (string, string):string                         | 1.0 |
+| [fistLetterUpper](#fistLetterUpper) | 字符串首字母大写          | (string):string                                 | 1.0 |
+| [getCamelCase](#getCamelCase)       | 短横线命名转换成驼峰命名      | (string):string                                 | 1.0 |
+| [getIDCardInfo](#getIDCardInfo)     | 根据身份证号码获取年龄、生日和性别 | (string):{age: any, birthday: any, sex: string} | 1.0 |
+| [getKebabCase](#getKebabCase)       | 驼峰命名转换成短横线命名      | (string):string                                 | 1.0 |
+| [isEmpty](#isEmpty)                 | 检查字符串是否为空         | (string):boolean                                | 1.0 |
+| [validateIDCard](#validateIDCard)   | 校验身份证号是否合法        | (string):boolean                                | 1.0 |
 
 ### 常用正则表达式判断
 
-| 方法名                           | 说明          | 参数               | 版本    |
-|-------------------------------|-------------|------------------|-------|
-| [REG](#REG)                   | 静态变量        | 无                | 1.0   |
-| [isIdNumber](#isIdNumber)     | 是否是正确的身份证号码 | (string):boolean | 1.0   |
+| 方法名                       | 说明          | 参数               | 版本  |
+|---------------------------|-------------|------------------|-----|
+| [REG](#REG)               | 静态变量        | 无                | 1.0 |
+| [isIdNumber](#isIdNumber) | 是否是正确的身份证号码 | (string):boolean | 1.0 |
+
+### 终端校验工具
+
+| 方法名                 | 说明           | 参数         | 版本  |
+|---------------------|--------------|------------|-----|
+| isIOS               | 是否是iOS终端     | ():boolean | 1.0 |
+| isAndroid           | 是否是Android终端 | ():boolean | 1.0 |
+| isWeiXin            | 是否是微信终端      | ():boolean | 1.0 |
+| isWeiXinMiniprogram | 是否是微信小程序终端   | ():boolean | 1.0 |
+| isAliPay            | 是否是支付宝终端     | ():boolean | 1.0 |
+| getIOSVersion       | 获取iOS系统版本    | ():number  | 1.0 |
+
 
 ### 其他工具
 
-| 方法名                                                 | 说明                   | 参数                          | 版本    |
-|-----------------------------------------------------|----------------------|-----------------------------|-------|
-| [REG_IDNUMBER](#REG_IDNUMBER)                       | 静态变量:身份证验证           | 无                           | 1.0   |
-| [hexToRgba](#hexToRgba)                             | 颜色格式转换：hex格式转为rgba格式 | (string, number):string     | 1.0   |
-| [debounce](#debounce)                               | 防抖函数                 | (function, number):function | 1.0   |
-| [throttle](#throttle)                               | 节流函数                 | (function, number):function | 1.0   |
-| [deepClone](#deepClone)                             | 对象深拷贝                | (object, weakMap):object    | 1.0   |
-| [createDailyScheduler](#createDailyScheduler)       | 设置定时任务器              | ():object                   | 1.0   |
-| [fullScreenDisplay](#fullScreenDisplay)             | 全屏展示功能               | (el):function               | 1.0   |
+| 方法名                                           | 说明                      | 参数                          | 版本  |
+|-----------------------------------------------|-------------------------|-----------------------------|-----|
+| [REG_IDNUMBER](#REG_IDNUMBER)                 | 静态变量                    | 无                           | 1.0 |
+| [hexToRgba](#hexToRgba)                       | 颜色格式转换：hex格式转为rgba格式    | (string, number):string     | 1.0 |
+| [debounce](#debounce)                         | 防抖函数                    | (function, number):function | 1.0 |
+| [throttle](#throttle)                         | 节流函数                    | (function, number):function | 1.0 |
+| [deepClone](#deepClone)                       | 对象深拷贝                   | (object, weakMap):object    | 1.0 |
+| [createDailyScheduler](#createDailyScheduler) | 设置定时任务器                 | ():object                   | 1.0 |
+| [fullScreenDisplay](#fullScreenDisplay)       | 全屏展示功能                  | (el):function               | 1.0 |
+| [getHashParam](#getHashParam)                 | 获取 location.hash 对应参数值  | (string):any                | 1.0 |
 
 ## 详细
 
@@ -169,6 +182,7 @@ getCamelCase('get_camel_case')
 
 ### getKebabCase
 getKebabCase(string)
+
 驼峰命名转换成短横线命名
 - 示例
 ```javascript
@@ -360,4 +374,18 @@ validateIDCard(string)
 ```javascript
 validateIDCard('142323199010410090')
 // false
+```
+
+### getHashParam
+getHashParam(string)
+
+获取 location.hash 对应参数值
+
+参数存在，返回对应的value；参数不存在，返回空字符
+- 示例
+```javascript
+// url: https://xxx.com?name=张三
+const name = getHashParam('name')
+console.log(name)
+// 张三
 ```

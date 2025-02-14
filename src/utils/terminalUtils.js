@@ -2,7 +2,7 @@
  * @description 是否是Android终端
  * @returns {Boolean} 是返回true，不是返回false
  * @example
- * lm.baseUtils.isAndroid() => true or false
+ * isAndroid() => true or false
  */
 function isAndroid () {
     let u = navigator.userAgent
@@ -14,7 +14,7 @@ function isAndroid () {
  * @description 是否是iOS终端
  * @returns {Boolean} 是返回true，不是返回false
  * @example
- * lm.baseUtils.isIOS() => true or false
+ * isIOS() => true or false
  */
 function isIOS () {
     let u = navigator.userAgent
@@ -26,7 +26,7 @@ function isIOS () {
  * @description 是否是微信终端
  * @returns {Boolean} 返回 true 是，false 不是
  * @example
- * lm.baseUtils.isWeiXin() => true or false
+ * isWeiXin() => true or false
  */
 function isWeiXin () {
     let ua = navigator.userAgent.toLowerCase()
@@ -42,7 +42,7 @@ function isWeiXin () {
  * @description 是否是微信小程序终端
  * @returns {Boolean} 返回 true 是，false 不是
  * @example
- * lm.baseUtils.isWeiXinMiniprogram() => true or false
+ * isWeiXinMiniprogram() => true or false
  */
 function isWeiXinMiniprogram () {
     let ua = navigator.userAgent.toLowerCase()
@@ -63,7 +63,7 @@ function isWeiXinMiniprogram () {
  * @description 是否是支付宝终端
  * @returns {Boolean} 返回 true 是，false 不是
  * @example
- * lm.baseUtils.isAliPay() => true or false
+ * isAliPay() => true or false
  */
 function isAliPay () {
     let ua = navigator.userAgent.toLowerCase()
@@ -79,7 +79,7 @@ function isAliPay () {
  * @description 是否是浙里办App
  * @returns {Boolean} 返回 true 是，false 不是
  * @example
- * lm.baseUtils.isZlbApp() => true or false
+ * isZlbApp() => true or false
  */
 function isZlbApp () {
     let ua = navigator.userAgent.toLowerCase()
@@ -91,7 +91,7 @@ function isZlbApp () {
  * @description 是否是浙里办小程序
  * @returns {Boolean} 返回 true 是，false 不是
  * @example
- * lm.baseUtils.isZlbMP() => true or false
+ * isZlbMP() => true or false
  */
 function isZlbMP () {
     let source = sessionStorage.getItem('source')
@@ -102,7 +102,7 @@ function isZlbMP () {
  * @description 是否是支付宝小程序终端
  * @returns {Boolean} 返回 true 是，false 不是
  * @example
- * lm.baseUtils.isAliPayMiniprogram() => true or false
+ * isAliPayMiniprogram() => true or false
  */
 function isAliPayMiniprogram () {
     let ua = navigator.userAgent.toLowerCase()
@@ -123,7 +123,7 @@ function isAliPayMiniprogram () {
  * @description 是否是钉钉终端[个人钉钉]
  * @returns {Boolean} 返回 true 是，false 不是
  * @example
- * lm.baseUtils.isDingTalk() => true or false
+ * isDingTalk() => true or false
  */
 function isDingTalk () {
     const ua = navigator.userAgent.toLowerCase()
@@ -139,7 +139,7 @@ function isDingTalk () {
  * @description 是否是钉钉小程序端[个人钉钉]
  * @returns {Boolean} 返回 true 是，false 不是
  * @example
- * lm.baseUtils.isDingTalkMP() => true or false
+ * isDingTalkMP() => true or false
  */
 function isDingTalkMP () {
     if (isDingTalk()) {
@@ -159,7 +159,7 @@ function isDingTalkMP () {
  * @description 是否是钉钉H5端(如钉钉微应用)[个人钉钉]
  * @returns {Boolean} 返回 true 是，false 不是
  * @example
- * lm.baseUtils.isDingTalkH5() => true or false
+ * isDingTalkH5() => true or false
  */
 function isDingTalkH5 () {
     if (isDingTalk()) {
@@ -177,7 +177,7 @@ function isDingTalkH5 () {
  * @description 是否是专有钉钉端
  * @returns {Boolean} 返回 true 是，false 不是
  * @example
- * lm.baseUtils.isGovDingTalk() => true or false
+ * isGovDingTalk() => true or false
  */
 function isGovDingTalk () {
     const ua = navigator.userAgent.toLowerCase()
@@ -193,7 +193,7 @@ function isGovDingTalk () {
  * @description 获取iOS系统版本
  * @returns {Number} 是iOS终端返回终端系统版本号，不是返回 undefined
  * @example
- * lm.baseUtils.getIOSVersion() => 13.3.1
+ * getIOSVersion() => 13.3.1
  */
 function getIOSVersion () {
     if (isIOS()) {

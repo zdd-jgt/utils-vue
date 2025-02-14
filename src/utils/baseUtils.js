@@ -194,7 +194,7 @@ function fullScreenDisplay(el) {
  * @param {String} name 参数key
  * @returns {String} 参数存在，返回对应的value；参数不存在，返回空字符
  * @example
- * lm.baseUtils.getHashParam('name') => '张三'
+ * getHashParam('name') => '张三'
  */
 function getHashParam (name) {
     try {
