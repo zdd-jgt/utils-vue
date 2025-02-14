@@ -56,6 +56,14 @@ utilsVue.utils.REG_ID_NUMBER
 | isAliPay            | 是否是支付宝终端     | ():boolean | 1.0 |
 | getIOSVersion       | 获取iOS系统版本    | ():number  | 1.0 |
 
+### 时间相关通用工具
+
+| 方法名                            | 说明                            | 参数                      | 版本  |
+|--------------------------------|-------------------------------|-------------------------|-----|
+| [addDays](#addDays)            | 添加几天                          | (date, number):date     | 1.0 |
+| [dateFormat](#dateFormat)      | 日期格式化                         | (string, string):string | 1.0 |
+| [dealYear](#dealYear)          | 处理年份                          | (string):string         | 1.0 |
+| [isLeapYear](#isLeapYear)      | 是否为闰年，能被4整除且不能被100整除，或能被400整除 | (string):boolean        | 1.0 |
 
 ### 其他工具
 
@@ -389,4 +397,63 @@ getHashParam(string)
 const name = getHashParam('name')
 console.log(name)
 // 张三
+```
+
+### addDays
+addDays(date, number)
+
+获取添加几天后的新日期
+
+- 示例
+```javascript
+const time = addDays(new Date(), 3)
+console.log(time)
+// Mon Feb xx xxxx xx:xx:xx GMT+0800 (中国标准时间)
+```
+
+### dateFormat
+dateFormat(string|number}, string)
+
+日期格式化
+
+返回格式化后的日期
+- 示例
+```javascript
+const time = addDays(new Date(), 3)
+console.log(time)
+// Mon Feb xx xxxx xx:xx:xx GMT+0800 (中国标准时间)
+dateFormat(time)
+// 'YYYY-MM-DD HH:mm:ss'
+```
+
+### dealYear
+dealYear(string)
+
+处理年份
+
+返回格式化后的日期
+- 示例
+```javascript
+console.log(dealYear('2025'))
+// '今年'
+console.log(dealYear('2024'))
+// '去年'
+console.log(dealYear('2026'))
+// '明年'
+console.log(dealYear('2027'))
+// '2027年'
+```
+
+### isLeapYear
+isLeapYear(string)
+
+是否为闰年，能被4整除且不能被100整除，或能被400整除
+
+是返回 true，不是返回 false
+- 示例
+```javascript
+console.log(isLeapYear('2025'))
+// false
+console.log(isLeapYear('2020'))
+// true
 ```
