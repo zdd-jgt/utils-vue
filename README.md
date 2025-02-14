@@ -82,6 +82,7 @@ REG_MOBILE // 手机号码
 REG_TELEPHONE // 固定电话号码
 REG_EMAIL // 邮件地址
 REG_CAR_PLATE // 车牌号
+REG_PASSWORD // 常用8至12位包含英文、字符、数字的密码
 ```
 
 ### isIdNumber

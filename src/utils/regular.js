@@ -35,6 +35,9 @@ const specialCharRegular = new RegExp("[`~!@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥
 const longitudeRegular = /^[+-]?((\d|[1-9]\d|[1][1-7]\d)(\.\d{1,6})?|180(\.0{1,6})?)$/
 const latitudeRegular = /^[+-]?((\d|[1-8]\d)(\.\d{1,6})?|90(\.0{1,6})?)$/
 
+// 常用8至12位包含英文、字符、数字的密码
+const REG_PASSWORD = /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{8,12}$/
+
 /**
  * 是否是正确的身份证号码
  * @param {string} idCard
@@ -51,5 +54,6 @@ module.exports = {
     REG_TELEPHONE,
     REG_EMAIL,
     REG_CAR_PLATE,
+    REG_PASSWORD,
     isIdNumber,
 }
