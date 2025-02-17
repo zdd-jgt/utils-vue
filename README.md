@@ -69,7 +69,6 @@ utilsVue.utils.REG_ID_NUMBER
 
 | 方法名                                           | 说明                      | 参数                          | 版本  |
 |-----------------------------------------------|-------------------------|-----------------------------|-----|
-| [REG_IDNUMBER](#REG_IDNUMBER)                 | 静态变量                    | 无                           | 1.0 |
 | [hexToRgba](#hexToRgba)                       | 颜色格式转换：hex格式转为rgba格式    | (string, number):string     | 1.0 |
 | [debounce](#debounce)                         | 防抖函数                    | (function, number):function | 1.0 |
 | [throttle](#throttle)                         | 节流函数                    | (function, number):function | 1.0 |
