@@ -3,12 +3,18 @@
 
 ### Bug Fixes
 
+* 操作手册优化 ([df66ad3](https://github.com/zdd-jgt/utils-vue/commit/df66ad3ace125fb4d71b6e9c5e69f1d753a8acdc))
 * 操作手册优化，版本2.0.2 ([6a79e13](https://github.com/zdd-jgt/utils-vue/commit/6a79e13c89317481e6f3530db0edf2cad6574bfd))
+* 发布版本2.0.3 ([400efe6](https://github.com/zdd-jgt/utils-vue/commit/400efe6e65e66064ed60ae4426868f86fe4d3cb2))
 * 设置忽略node_modules ([195cc44](https://github.com/zdd-jgt/utils-vue/commit/195cc446e591a14231541255ffd41930b0f3e099))
 * 添加短横线命名转换成驼峰命名说明 ([99e9f0a](https://github.com/zdd-jgt/utils-vue/commit/99e9f0a691c1dc98fd71044404c84b4c727ed123))
+* 添加发版日志 ([f86dddd](https://github.com/zdd-jgt/utils-vue/commit/f86dddd827c92039a8344372062ebbbc7c68b529))
+* 添加日志生成工具，添加测试用例插件 ([062ab98](https://github.com/zdd-jgt/utils-vue/commit/062ab9842153076e3fb8a0dcc5206beed9240ba0))
+* 添加提供TS类型支持 ([d95750e](https://github.com/zdd-jgt/utils-vue/commit/d95750e601dce08945b5ff685dc127ff9db7d8c5))
 * 添加Follow订阅源认证 ([75b6ed6](https://github.com/zdd-jgt/utils-vue/commit/75b6ed69bf549f0654fd01acb852a6ff06ab065e))
 * 修改版本号 ([995c033](https://github.com/zdd-jgt/utils-vue/commit/995c0332d55c0a0292453e3f1f7f109b64375b4e))
 * 修改版本为1.0.5 ([02ee7d0](https://github.com/zdd-jgt/utils-vue/commit/02ee7d07c9e6e961d21f9438c6f12cb4d42c8933))
+* 优化函数digitUppercase和intToChinese，并添加单元测试 ([aea0326](https://github.com/zdd-jgt/utils-vue/commit/aea0326baae68bec4c4ec8142d54643b4733233b))
 * 优化数字转为千分位分隔为金额转为千分位分隔 ([1df580a](https://github.com/zdd-jgt/utils-vue/commit/1df580a913d4437e566eedd587073f8a54ee4e77))
 * 优化说明 ([5361e38](https://github.com/zdd-jgt/utils-vue/commit/5361e3872cea5abeb752ad4b3330f5df0c06edec))
 * 优化说明 ([7f08664](https://github.com/zdd-jgt/utils-vue/commit/7f086644e7c98a3a47675a500cf50f11bbb6aa1b))
