@@ -33,13 +33,13 @@ utilsVue.utils.REG_ID_NUMBER
 
 ### 数字处理工具
 
-| 方法名                                                 | 说明                   | 参数                                              | 版本    |
-|-----------------------------------------------------|----------------------|-------------------------------------------------|-------|
-| [digitUppercase](#digitUppercase)                   | 数字转化为大写金额            | (number):string                                 | 1.0   |
-| [intToChinese](#intToChinese)                       | 数字转化为中文数字（不支持小数）     | (number):string                                 | 1.0   |
-| [randomNum](#randomNum)                             | 生成指定范围随机数            | (number, number):number                         | 1.0   |
-| [setPercentileSeparation](#setPercentileSeparation) | 金额转为千分位分隔            | (number):string                                 | 1.0   |
-| [telFormat](#telFormat)                             | 手机号中间四位变成*           | (number或string):string                          | 1.0   |
+| 方法名                                                 | 说明                   | 参数                                              | 版本  |
+|-----------------------------------------------------|----------------------|-------------------------------------------------|-----|
+| [digitUppercase](#digitUppercase)                   | 数字转化为大写金额            | (number):string                                 | 2.0 |
+| [intToChinese](#intToChinese)                       | 数字转化为中文数字（不支持小数）     | (number):string                                 | 2.0 |
+| [randomNum](#randomNum)                             | 生成指定范围随机数            | (number, number):number                         | 1.0 |
+| [setPercentileSeparation](#setPercentileSeparation) | 金额转为千分位分隔            | (number):string                                 | 1.0 |
+| [telFormat](#telFormat)                             | 手机号中间四位变成*           | (number或string):string                          | 1.0 |
 
 ### 字符串处理工具
 
