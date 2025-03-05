@@ -1,10 +1,25 @@
-# 常用工具函数
+# utils-vue - Vue 常用工具函数库
 
-> github: https://github.com/zdd-jgt/utils-vue
+> 一个专为 Vue 项目设计的实用工具函数集合，包含数字处理、字符串处理、日期处理等常用功能。
+
+[![npm version](https://img.shields.io/npm/v/utils-vue.svg)](https://www.npmjs.com/package/utils-vue)
+[![license](https://img.shields.io/npm/l/utils-vue.svg)](https://github.com/zdd-jgt/utils-vue/blob/master/README.md)
+
+## 特性
+
+- 🚀 轻量高效：仅包含必要的工具函数
+- 📦 开箱即用：简单易用的 API 设计
+- 🛠 类型支持：完善的 TypeScript 类型定义
+- ✅ 单元测试：所有功能都经过严格测试
 
 ## 安装
 
-`npm install utils-vue`
+```bash
+npm install utils-vue
+# 或
+yarn add utils-vue
+```
+## 快速开始
 
 ```javascript
 import utilsVue from 'utils-vue'
@@ -456,3 +471,44 @@ console.log(isLeapYear('2025'))
 console.log(isLeapYear('2020'))
 // true
 ```
+
+## 贡献指南
+我们欢迎并感谢所有贡献！在提交贡献之前，请阅读以下指南。
+
+### 开发环境
+1. 克隆仓库
+```bash
+git clone https://github.com/zdd-jgt/utils-vue.git
+cd utils-vue
+```
+2. 分支介绍
+```bash
+develop 开发分支
+master 正式分支
+release-x 过往版本分支 
+```
+3. 安装依赖
+```bash
+npm install
+```
+4. 打包
+```bash
+npm run build
+```
+### 代码规范
+1. 使用ESLint进行代码检查
+2. 遵循JavaScript Standard Style
+3. 所有新功能必须包含单元测试
+4. 提交信息遵循 Conventional Commits 规范
+### 提交Pull Request
+1. 在GitHub上创建Pull Request
+2. 描述清楚你的改动内容和原因
+3. 确保所有测试通过
+4. 等待代码审查
+### 报告问题
+如果发现任何问题，请通过 Issues 页面报告。
+### 行为准则
+请遵守我们的 行为准则 ，保持友好和尊重的交流环境。
+
+## License
+MIT © zdd-jgt
